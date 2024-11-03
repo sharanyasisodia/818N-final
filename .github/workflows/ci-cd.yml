@@ -19,7 +19,6 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: '18'
-      working-directory: ./doctor-office-backend
 
     - name: Install Backend Dependencies
       run: npm install
@@ -38,15 +37,15 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: '14'
-      working-directory: ./doctor-office-frontend
 
     - name: Install Frontend Dependencies
       run: npm install
       working-directory: ./doctor-office-frontend
 
-#    - name: Run Frontend Tests
-#      run: npm run test
-#      working-directory: ./doctor-office-frontend
+    # Uncomment the following lines if you want to run frontend tests
+    # - name: Run Frontend Tests
+    #   run: npm run test
+    #   working-directory: ./doctor-office-frontend
 
     # Step 4: Docker Login to Amazon ECR
     - name: Log in to Amazon ECR
@@ -73,6 +72,10 @@ jobs:
 
     # Step 7: Deploy to EKS
     - name: Configure kubectl
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_REGION: ${{ secrets.AWS_REGION }}
       run: |
         aws eks update-kubeconfig --region ${{ secrets.AWS_REGION }} --name doctor-appointment
 
