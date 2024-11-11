@@ -20,14 +20,8 @@ spec:
         env:
         - name: REACT_APP_BACKEND_URL
           value: "http://backend-service:3000"
-        - name: AWS_XRAY_SDK_ENABLED
-          value: "false"
-        - name: OTEL_TRACES_EXPORTER
-          value: "none"
-        - name: OTEL_METRICS_EXPORTER
-          value: "none"
-        - name: OTEL_LOGS_EXPORTER
-          value: "none"
+        - name: NODE_ENV
+          value: "production"
 ---
 apiVersion: v1
 kind: Service
