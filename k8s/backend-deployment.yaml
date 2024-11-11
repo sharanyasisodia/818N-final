@@ -20,6 +20,11 @@ spec:
         env:
         - name: MONGO_URI
           value: "mongodb://mongo-service:27017/appointments"
+        resources:
+          requests:
+            cpu: "200m"  
+          limits:
+            cpu: "500m"  
 ---
 apiVersion: v1
 kind: Service

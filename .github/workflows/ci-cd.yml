@@ -42,10 +42,9 @@ jobs:
       run: npm install
       working-directory: ./doctor-office-frontend
 
-    # Uncomment the following lines if you want to run frontend tests
-    # - name: Run Frontend Tests
-    #   run: npm run test
-    #   working-directory: ./doctor-office-frontend
+    - name: Run Frontend Tests
+      run: npm run test
+      working-directory: ./doctor-office-frontend
 
     # Step 4: Docker Login to Amazon ECR
     - name: Log in to Amazon ECR
