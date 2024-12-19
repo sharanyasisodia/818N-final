@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: backend
-        image: 588738610761.dkr.ecr.us-east-2.amazonaws.com/sharanya-group:backend-latest
+        image: sharanya080/backend:latest
         ports:
         - containerPort: 3000
         env:
